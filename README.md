@@ -1,0 +1,2 @@
+# EnglishMorseCode
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/13bcc77f38414482909a73f93303b8ba)](https://app.codacy.com/app/rubin-labs/EnglishMorseCode?utm_source=github.com&utm_medium=referral&utm_content=rubin-labs/EnglishMorseCode&utm_campaign=Badge_Grade_Settings)
