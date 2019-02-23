@@ -1,2 +1,3 @@
 # EnglishMorseCode
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/13bcc77f38414482909a73f93303b8ba)](https://app.codacy.com/app/rubin-labs/EnglishMorseCode?utm_source=github.com&utm_medium=referral&utm_content=rubin-labs/EnglishMorseCode&utm_campaign=Badge_Grade_Settings)
+[![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/rubin-labs/EnglishMorseCode.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rubin-labs/EnglishMorseCode/context:java)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/rubin-labs/EnglishMorseCode.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rubin-labs/EnglishMorseCode/alerts/)
