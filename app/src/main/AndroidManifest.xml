@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".MorseCodeToEnglishActivity"
+            android:label="@string/title_activity_morse_code_to_english"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".EnglishToMorseCodeActivity"
+            android:label="@string/title_activity_english_to_morse_code"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>

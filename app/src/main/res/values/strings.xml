@@ -3,4 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_english_to_morse_code">EnglishToMorseCodeActivity</string>
+    <string name="title_activity_morse_code_to_english">MorseCodeToEnglishActivity</string>
 </resources>
