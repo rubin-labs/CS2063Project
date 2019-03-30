@@ -21,5 +21,4 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_morse_code_to_english" />
-
 </android.support.design.widget.CoordinatorLayout>
