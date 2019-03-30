@@ -9,24 +9,24 @@
     tools:showIn="@layout/activity_morse_code_to_english">
 
     <EditText
-        android:id="@+id/morseTextView"
+        android:id="@+id/m2eInputTextView"
         android:layout_width="395dp"
         android:layout_height="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/englishTextView"
+        app:layout_constraintBottom_toTopOf="@+id/morseOutputTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/englishTextView"
+        android:id="@+id/m2eOutputTextView"
         android:layout_width="395dp"
         android:layout_height="200dp"
         app:layout_constraintBottom_toTopOf="@+id/morseButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/morseTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/englishInputTextView" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/morseButton"
