@@ -8,4 +8,62 @@
     tools:context=".MorseCodeToEnglishActivity"
     tools:showIn="@layout/activity_morse_code_to_english">
 
+    <TextView
+        android:id="@+id/morseTextView"
+        android:layout_width="395dp"
+        android:layout_height="200dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/englishTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/englishTextView"
+        android:layout_width="395dp"
+        android:layout_height="200dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/morseButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/morseTextView" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/morseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="567dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/resetButton"
+        app:layout_constraintEnd_toStartOf="@+id/nextWordButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/resetButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/colorAccent" />
+
+    <Button
+        android:id="@+id/nextWordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="569dp"
+        android:text=">>"
+        app:layout_constraintBottom_toBottomOf="@+id/morseButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/morseButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="571dp"
+        android:text=">"
+        app:layout_constraintEnd_toStartOf="@+id/morseButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

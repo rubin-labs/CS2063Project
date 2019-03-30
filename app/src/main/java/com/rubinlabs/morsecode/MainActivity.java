@@ -53,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
         e2m_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(MainActivity.this,EnglishToMorseCodeActivity.class),1);
+                startActivityForResult(new Intent(MainActivity.this, EnglishToMorseCodeActivity.class),1);
             }
         });
 
         m2e_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(MainActivity.this,MorseCodeToEnglishActivity.class),1);
+                startActivityForResult(new Intent(MainActivity.this, MorseCodeToEnglishActivity.class),1);
             }
         });
     }
