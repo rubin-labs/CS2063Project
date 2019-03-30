@@ -12,7 +12,7 @@
         android:id="@+id/m2eInputTextView"
         android:layout_width="395dp"
         android:layout_height="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/morseOutputTextView"
+        app:layout_constraintBottom_toTopOf="@+id/m2eOutputTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/englishInputTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/m2eInputTextView" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/morseButton"

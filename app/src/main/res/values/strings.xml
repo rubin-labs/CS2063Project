@@ -5,4 +5,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_english_to_morse_code">EnglishToMorseCodeActivity</string>
     <string name="title_activity_morse_code_to_english">MorseCodeToEnglishActivity</string>
+    <string name="reset">reset</string>
 </resources>
