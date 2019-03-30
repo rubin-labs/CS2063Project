@@ -8,11 +8,10 @@
     tools:context=".MorseCodeToEnglishActivity"
     tools:showIn="@layout/activity_morse_code_to_english">
 
-    <TextView
+    <EditText
         android:id="@+id/morseTextView"
         android:layout_width="395dp"
         android:layout_height="200dp"
-        android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/englishTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -23,7 +22,6 @@
         android:id="@+id/englishTextView"
         android:layout_width="395dp"
         android:layout_height="200dp"
-        android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/morseButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -36,10 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="567dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/resetButton"
+        app:layout_constraintBottom_toBottomOf="@+id/nextCharacterButton"
         app:layout_constraintEnd_toStartOf="@+id/nextWordButton"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/resetButton"
+        app:layout_constraintStart_toEndOf="@+id/nextCharacterButton"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/colorAccent" />
 
@@ -56,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/resetButton"
+        android:id="@+id/nextCharacterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="571dp"
