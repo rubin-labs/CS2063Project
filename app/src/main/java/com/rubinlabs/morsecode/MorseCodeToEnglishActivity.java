@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
@@ -13,8 +12,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MorseCodeToEnglishActivity extends AppCompatActivity {
 
@@ -27,8 +24,8 @@ public class MorseCodeToEnglishActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // content
-        EditText morse_edittext = findViewById(R.id.morseTextView);
-        TextView english_textview = findViewById(R.id.englishTextView);
+        EditText morse_edittext = findViewById(R.id.m2eInputTextView);
+        TextView english_textview = findViewById(R.id.m2eOutputTextView);
         FloatingActionButton morse_btn = findViewById(R.id.morseButton);
         Button char_btn = findViewById(R.id.nextCharacterButton);
         Button word_btn = findViewById(R.id.nextWordButton);
