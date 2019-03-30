@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MorseCodeToEnglishActivity"
             android:label="@string/title_activity_morse_code_to_english"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EnglishToMorseCodeActivity"
             android:label="@string/title_activity_english_to_morse_code"
