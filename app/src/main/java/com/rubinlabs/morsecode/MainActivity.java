@@ -14,9 +14,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private Button e2m_btn, m2e_btn;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
@@ -44,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Morse Code Translator");
         setContentView(R.layout.activity_main);
 
-        e2m_btn = (Button) findViewById(R.id.English2MorseButton);
-        m2e_btn = (Button) findViewById(R.id.Morse2EnglishButton);
+        Button e2m_btn = (Button) findViewById(R.id.English2MorseButton);
+        Button m2e_btn = (Button) findViewById(R.id.Morse2EnglishButton);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

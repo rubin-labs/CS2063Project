@@ -41,7 +41,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/nextCharacterButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/colorAccent" />
+        app:srcCompat="?attr/colorAccent"
+        android:focusable="true" />
 
     <Button
         android:id="@+id/nextWordButton"
