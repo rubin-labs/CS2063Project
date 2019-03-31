@@ -1,13 +1,12 @@
 package com.rubinlabs.morsecode;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.hardware.camera2.CameraAccessException;
-import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -27,6 +26,7 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
     private String myCameraID;
     private Thread myThread;
     private int time_unit;
+    private boolean useFlashlight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,12 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_english_to_morse_code);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        // Get preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        useFlashlight = sharedPreferences.getBoolean("flash_switch", true);
 
         // Content of Activity
         e2mInput = findViewById(R.id.e2mInputTextView);
@@ -63,7 +69,10 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
                 char[] inputCharArray = myInput.toCharArray();
                 ArrayList<Integer> mediaInstructions = new ArrayList<>();
 
-                /*
+                e2mOutput.setText(myInput);
+
+
+                /* Algorithm to play morse code:
                  * Character Codes
                  *  0 = dit '.'
                  *  1 = dah '-'
@@ -104,16 +113,16 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
                     public void run() {
                         int i = 0;
                         try {
-                            while (i++ < mediaInstructions.size() && isRunning) {
+                            while (i < mediaInstructions.size() && isRunning) {
                                 switch (mediaInstructions.get(i)) {
 
                                     case 0:
-                                        myCameraManager.setTorchMode(myCameraID, true);
+                                        if (useFlashlight) { myCameraManager.setTorchMode(myCameraID, true); }
                                         myMediaPlayer.start();
                                         Thread.sleep(time_unit);
                                         break;
                                     case 1:
-                                        myCameraManager.setTorchMode(myCameraID, true);
+                                        if (useFlashlight) { myCameraManager.setTorchMode(myCameraID, true); }
                                         myMediaPlayer.start();
                                         Thread.sleep(3 * time_unit);
                                         break;
@@ -127,11 +136,13 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
                                         Thread.sleep(7 * time_unit);
                                         break;
                                 }
-                                myCameraManager.setTorchMode(myCameraID, false);
+                                if (useFlashlight) { myCameraManager.setTorchMode(myCameraID, false); }
                                 if (myMediaPlayer.isPlaying()) {
                                     myMediaPlayer.pause();
                                     myMediaPlayer.seekTo(0);
                                 }
+
+                                i++;
                             }
                         } catch (Exception e) {
                             System.out.println(e);
@@ -148,6 +159,12 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
                 myThread.start();
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
@@ -176,9 +193,16 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         myMediaPlayer.release();
-        myThread.interrupt();
+
+        if (myThread != null && myThread.isAlive()) {
+            myThread.interrupt();
+        }
 
         // Turn off flash if it is still on
-        try { myCameraManager.setTorchMode(myCameraID, false); } catch (Exception e) { System.out.println(e); }
+        try {
+            if (useFlashlight) { myCameraManager.setTorchMode(myCameraID, false); }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

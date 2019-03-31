@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +25,8 @@ public class MorseCodeToEnglishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_morse_code_to_english);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         // content
         m2eInput = findViewById(R.id.m2eInputTextView);
@@ -76,8 +76,12 @@ public class MorseCodeToEnglishActivity extends AppCompatActivity {
         });
 
         m2eInput.requestFocus();
+    }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
