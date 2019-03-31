@@ -1,6 +1,13 @@
 package com.rubinlabs.morsecode;
 
+import android.app.Activity;
+import android.content.Context;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,7 +22,10 @@ import java.util.ArrayList;
 public class EnglishToMorseCodeActivity extends AppCompatActivity {
     private EditText e2mInput;
     private TextView e2mOutput;
-    private MorseCodePlayer morseCodePlayer;
+    private MediaPlayer myMediaPlayer;
+    private CameraManager myCameraManager;
+    private String myCameraID;
+    private int time_unit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +43,17 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
         // Create Morse Code Translator Engine
         MorseCodeTranslator myTranslator = MorseCodeTranslator.getInstance();
 
-        // Create MorseCodePlayer
-        morseCodePlayer = new MorseCodePlayer(this);
+        // Create Media Player
+        myMediaPlayer = MediaPlayer.create(this, R.raw.dah);
+        time_unit = myMediaPlayer.getDuration() / 3;
+
+        // Create a Camera Manager object
+        try {
+            myCameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+            myCameraID = myCameraManager.getCameraIdList()[0];
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
 
         translateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +95,48 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
                             break;
                     }
                 }
+
+                Runnable myRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        for(int i = 0; i < mediaInstructions.size(); i++) {
+                            try {
+                                switch (mediaInstructions.get(i)) {
+
+                                    case 0:
+                                        myCameraManager.setTorchMode(myCameraID, true);
+                                        myMediaPlayer.start();
+                                        Thread.sleep(time_unit);
+                                        break;
+                                    case 1:
+                                        myCameraManager.setTorchMode(myCameraID, true);
+                                        myMediaPlayer.start();
+                                        Thread.sleep(3 * time_unit);
+                                        break;
+                                    case 2:
+                                        Thread.sleep(time_unit);
+                                        break;
+                                    case 3:
+                                        Thread.sleep(3 * time_unit);
+                                        break;
+                                    case 4:
+                                        Thread.sleep(7 * time_unit);
+                                        break;
+                                }
+                                myCameraManager.setTorchMode(myCameraID, false);
+                                if (myMediaPlayer.isPlaying()) {
+                                    myMediaPlayer.pause();
+                                    myMediaPlayer.seekTo(0);
+                                }
+                            } catch (Exception e) {
+                                System.out.println(e);
+                            }
+                        }
+                    }
+                };
+
+                Thread myThread = new Thread(myRunnable);
+                myThread.start();
 
                 for (int i=0; i<mediaInstructions.size(); i++) {
                     myInput = myInput + mediaInstructions.get(i);
