@@ -1,6 +1,5 @@
 package com.rubinlabs.morsecode;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -43,26 +42,16 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Morse Code Translator");
         setContentView(R.layout.activity_main);
 
-        Button e2m_btn = (Button) findViewById(R.id.English2MorseButton);
-        Button m2e_btn = (Button) findViewById(R.id.Morse2EnglishButton);
+        e2m_btn = findViewById(R.id.English2MorseButton);
+        m2e_btn = findViewById(R.id.Morse2EnglishButton);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        mTextMessage = findViewById(R.id.message);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        e2m_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(MainActivity.this, EnglishToMorseCodeActivity.class),1);
-            }
-        });
+        e2m_btn.setOnClickListener(v -> startActivityForResult(new Intent(MainActivity.this, EnglishToMorseCodeActivity.class),1));
 
-        m2e_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(MainActivity.this, MorseCodeToEnglishActivity.class),1);
-            }
-        });
+        m2e_btn.setOnClickListener(v -> startActivityForResult(new Intent(MainActivity.this, MorseCodeToEnglishActivity.class),1));
     }
 
 }

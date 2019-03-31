@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class EnglishToMorseCodeActivity extends AppCompatActivity {
     private EditText e2mInput;
     private TextView e2mOutput;
+    private MorseCodePlayer morseCodePlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,9 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
 
         // Create Morse Code Translator Engine
         MorseCodeTranslator myTranslator = MorseCodeTranslator.getInstance();
+
+        // Create MorseCodePlayer
+        morseCodePlayer = new MorseCodePlayer(this);
 
         translateButton.setOnClickListener(new View.OnClickListener() {
             @Override
