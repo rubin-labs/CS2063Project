@@ -2,7 +2,6 @@ package com.rubinlabs.morsecode;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,8 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class EnglishToMorseCodeActivity extends AppCompatActivity {
-    EditText e2mInput;
-    TextView e2mOutput;
+    private EditText e2mInput;
+    private TextView e2mOutput;
+    private MorseCodePlayer morseCodePlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +31,14 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
         // Create Morse Code Translator Engine
         MorseCodeTranslator mctEngine = MorseCodeTranslator.getInstance();
 
-        translateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String myInput = e2mInput.getText().toString();
-                myInput = mctEngine.englishWordToMorseWord(myInput);
-                e2mOutput.setText(myInput);
+        // Create MorseCodePlayer
+        morseCodePlayer = new MorseCodePlayer(this);
 
-            }
+        translateButton.setOnClickListener(view -> {
+            String myInput = e2mInput.getText().toString();
+            myInput = mctEngine.englishWordToMorseWord(myInput);
+            e2mOutput.setText(myInput);
+
         });
     }
 
