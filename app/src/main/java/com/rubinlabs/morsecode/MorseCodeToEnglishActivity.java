@@ -14,7 +14,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MorseCodeToEnglishActivity extends AppCompatActivity {
     private EditText m2eInput;
@@ -39,54 +38,41 @@ public class MorseCodeToEnglishActivity extends AppCompatActivity {
         // translator
         MorseCodeTranslator mct = MorseCodeTranslator.getInstance();
 
-        m2eInput.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                v.onTouchEvent(event);
-                InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (imm != null) {
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-                return true;
+
+        m2eInput.setOnTouchListener((v, event) -> {
+            v.onTouchEvent(event);
+            InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             }
+            return true;
         });
 
-        morse_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String new_text = m2eInput.getText() + ".";
-                m2eInput.setText(new_text);
-                m2eInput.setSelection(new_text.length());
-            }
+        morse_btn.setOnClickListener(view -> {
+            String new_text = m2eInput.getText() + ".";
+            m2eInput.setText(new_text);
+            m2eInput.setSelection(new_text.length());
         });
 
-        morse_btn.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                String new_text = m2eInput.getText() + "-";
-                m2eInput.setText(new_text);
-                m2eInput.setSelection(new_text.length());
-                return  true;
-            }
+        morse_btn.setOnLongClickListener(v -> {
+            String new_text = m2eInput.getText() + "-";
+            m2eInput.setText(new_text);
+            m2eInput.setSelection(new_text.length());
+            return  true;
         });
 
-        char_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String new_text = m2eInput.getText() + " ";
-                m2eInput.setText(new_text);
-                m2eInput.setSelection(new_text.length());
-                m2eOutput.setText(mct.morseWordToEnglishWord(new_text));
-            }
+        char_btn.setOnClickListener(view -> {
+            String new_text = m2eInput.getText() + " ";
+            m2eInput.setText(new_text);
+            m2eInput.setSelection(new_text.length());
+            m2eOutput.setText(mct.morseWordToEnglishWord(new_text));
         });
 
-        word_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String new_text = m2eInput.getText() + " / ";
-                m2eInput.setText(new_text);
-                m2eInput.setSelection(new_text.length());
-                m2eOutput.setText(mct.morseWordToEnglishWord(new_text));
-            }
+        word_btn.setOnClickListener(view -> {
+            String new_text = m2eInput.getText() + " / ";
+            m2eInput.setText(new_text);
+            m2eInput.setSelection(new_text.length());
+            m2eOutput.setText(mct.morseWordToEnglishWord(new_text));
         });
 
         m2eInput.requestFocus();
