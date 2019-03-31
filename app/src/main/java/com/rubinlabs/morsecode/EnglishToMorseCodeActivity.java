@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class EnglishToMorseCodeActivity extends AppCompatActivity {
     private EditText e2mInput;
     private TextView e2mOutput;
@@ -29,16 +31,57 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
         FloatingActionButton translateButton = findViewById(R.id.translateButton);
 
         // Create Morse Code Translator Engine
-        MorseCodeTranslator mctEngine = MorseCodeTranslator.getInstance();
+        MorseCodeTranslator myTranslator = MorseCodeTranslator.getInstance();
 
         // Create MorseCodePlayer
         morseCodePlayer = new MorseCodePlayer(this);
 
-        translateButton.setOnClickListener(view -> {
-            String myInput = e2mInput.getText().toString();
-            myInput = mctEngine.englishWordToMorseWord(myInput);
-            e2mOutput.setText(myInput);
+        translateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String myInput = myTranslator.englishWordToMorseCode(e2mInput.getText().toString());
+                char[] inputCharArray = myInput.toCharArray();
+                ArrayList<Integer> mediaInstructions = new ArrayList<>();
 
+                /*
+                 * Character Codes
+                 *  0 = dit '.'
+                 *  1 = dah '-'
+                 *  2 = symbol space
+                 *  3 = letter space
+                 *  4 = word space
+                 */
+
+                for(int i=0; i<inputCharArray.length; i++) {
+                    switch(inputCharArray[i]) {
+                        case '.':
+                            mediaInstructions.add(0);
+                            if (!(inputCharArray[i+1] == ' '))
+                                mediaInstructions.add(2);
+                            break;
+
+                        case '-':
+                            mediaInstructions.add(1);
+                            if (!(inputCharArray[i+1] == ' '))
+                                mediaInstructions.add(2);
+                            break;
+
+                        case ' ':
+                            if (inputCharArray[i+1] == '/') {
+                                mediaInstructions.add(4);
+                                i = i + 2;
+                            } else {
+                                mediaInstructions.add(3);
+                            }
+                            break;
+                    }
+                }
+
+                for (int i=0; i<mediaInstructions.size(); i++) {
+                    myInput = myInput + mediaInstructions.get(i);
+                }
+                e2mOutput.setText(myInput);
+            }
         });
     }
 

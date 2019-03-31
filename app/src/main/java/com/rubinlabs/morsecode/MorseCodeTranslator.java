@@ -11,7 +11,8 @@ public class MorseCodeTranslator {
     // static variable single_instance of type Singleton
     private static MorseCodeTranslator instance = null;
 
-    private HashMap<String, String> englishToMorseLib = new HashMap<>(), morseToEnglishLib = new HashMap<>();
+    private final HashMap<String, String> englishToMorseLib = new HashMap<>();
+    private final HashMap<String, String> morseToEnglishLib = new HashMap<>();
 
     {
         //fill up englishToMorseLib
@@ -90,7 +91,7 @@ public class MorseCodeTranslator {
 
 
 
-    public String englishWordToMorseWord(String englishWord) {
+    public String englishWordToMorseCode(String englishWord) {
         StringBuffer buffer = new StringBuffer();
         Stream.of(englishWord.split("[ \n]"))
                 .forEach( s -> {
@@ -123,9 +124,5 @@ public class MorseCodeTranslator {
         return buffer.toString();
     }
 
-
-
-    public static void main(String[] args) {
-    }
 
 }
