@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Morse Code Translator");
         setContentView(R.layout.activity_main);
 
-        e2m_btn = findViewById(R.id.English2MorseButton);
-        m2e_btn = findViewById(R.id.Morse2EnglishButton);
+        Button e2m_btn = findViewById(R.id.English2MorseButton);
+        Button m2e_btn = findViewById(R.id.Morse2EnglishButton);
 
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
