@@ -34,36 +34,45 @@
         android:id="@+id/morseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="567dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/nextCharacterButton"
+        android:focusable="true"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/nextWordButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/nextCharacterButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/colorAccent"
-        android:focusable="true" />
+        app:layout_constraintVertical_bias="0.953"
+        app:maxImageSize="80dp"
+        app:srcCompat="@drawable/ic_baseline_flare_24px" />
 
     <Button
         android:id="@+id/nextWordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="569dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text=">>"
-        app:layout_constraintBottom_toBottomOf="@+id/morseButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/morseButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.927" />
 
     <Button
         android:id="@+id/nextCharacterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="571dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text=">"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/morseButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.927" />
 </android.support.constraint.ConstraintLayout>
