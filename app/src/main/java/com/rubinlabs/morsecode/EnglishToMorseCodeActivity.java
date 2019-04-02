@@ -184,6 +184,17 @@ public class EnglishToMorseCodeActivity extends AppCompatActivity {
             e2mInput.setText(null);
             e2mInput.setSelection(0);
             e2mOutput.setText(null);
+
+            if (myThread != null && myThread.isAlive()) {
+                myThread.interrupt();
+            }
+
+            // Turn off flash if it is still on
+            try {
+                if (useFlashlight) { myCameraManager.setTorchMode(myCameraID, false); }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
 
         return super.onOptionsItemSelected(item);
